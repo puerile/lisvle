@@ -1,34 +1,23 @@
 <?php
-	session_start();
-	if ($_SESSION['verified'])
-	{
-?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-<head>
-	<title>New Entry</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="author" content="Yuri">
-	<meta name="editor" content="Sublime Text">
-	<!--<style type="text/css" href="style.css" />-->
-</head>
-
-<?php
 	function __autoload($class_name)
 	{
     	include $class_name . '.php';
 	}
 
-	$db = new db();
-	$db->connect();
+	session_start();
 
-	$categories = mysql_query("select Category from Categories");
-	$subcategories = mysql_query("select * from Subcategories left join Categories using (cID) order by Subcategories.cID");
-	$priorities = mysql_query("select Priority from Priorities");
+	include('header.php');
+
+	if ($_SESSION['verified'])
+	{
+		$db = new db();
+		$db->connect();
+
+		$categories = mysql_query("select Category from Categories");
+		$subcategories = mysql_query("select * from Subcategories left join Categories using (cID) order by Subcategories.cID");
+		$priorities = mysql_query("select Priority from Priorities");
 ?>
 
-<body>
 	<form method="POST" action="post.php">
 		<input type="text" name="title" id="title" placeholder="Name">
 		<input type="text" name="link" id="link" placeholder="Link">
@@ -64,6 +53,13 @@
 		<input type="submit" value="post">
 	</form>
 
-<?php } ?>
-</body>
-</html>
+<?php
+	}
+
+	else
+	{
+		echo "not logged in";
+	}
+
+	include('footer.php');
+?>

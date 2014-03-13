@@ -1,15 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-<head>
-	<title>Register</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="author" content="Yuri">
-	<meta name="editor" content="Sublime Text">
-	<!-- <style type="text/css" href="style.css" /> -->
-</head>
-
-<body>
-
 <?php
 	function __autoload($class_name)
 	{
@@ -22,6 +10,8 @@
 		return $account->createUser($nick, $pw);
 	}
 
+	include('header.php');
+
 	if ($_POST['font-size'] == null)
 	{
 		$_POST['font-size'] = 10;
@@ -29,6 +19,7 @@
 
 	$showForm = true;
 
+	// lots of spaghetti code here
 	if (($_POST['nick'] != null) && ($_POST['password'] != null) && ($_POST['password_confirm'] != null))
 	{
 		if ($_POST['password'] == $_POST['password_confirm'])
@@ -58,6 +49,7 @@
 		echo "field missing";
 	}
 
+	// if someone tries to send an empty form, emphasise that we want it filled
 	else
 	{
 		$_POST['font-size']+=2;
@@ -79,7 +71,6 @@
 
 <?php
 	}
-?>
 
-</body>
-</html>
+	include('footer.php');
+?>
