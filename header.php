@@ -3,9 +3,9 @@
 <head>
 	<title>lisvle</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="author" content="Yuri">
-	<meta name="editor" content="Sublime Text">
-	<style rel="stylesheet" href="style.css" />
+	<meta name="author" content="Yuri" />
+	<meta name="editor" content="Sublime Text" />
+	<link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
