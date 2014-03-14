@@ -34,19 +34,19 @@
 
 			else
 			{
-				echo "fail: ".$result;
+				echo "<span class='alert'>fail: ".$result."</span>";
 			}
 		}
 
 		else
 		{
-			echo "passwords don't match";
+			echo "<span class='alert'>passwords don't match</span>";
 		}
 	}
 
 	else if (($_POST['nick'] != null) xor ($_POST['password'] != null) xor ($_POST['password_confirm'] != null))
 	{
-		echo "field missing";
+		echo "<span class='alert'>field missing</span>";
 	}
 
 	// if someone tries to send an empty form, emphasise that we want it filled
